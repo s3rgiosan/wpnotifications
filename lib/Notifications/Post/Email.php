@@ -41,22 +41,15 @@ class Email extends \s3rgiosan\WP\Plugin\Notifications\Notifications\Email {
 
 			$user_options = \get_user_meta( $user->ID, $this->plugin->get_settings_key(), true );
 
-			if ( ! empty( $user_options['posts'] ) &&  $user_options['posts'] === 'all' ) {
+			if ( ! isset( $user_options['posts'] ) || ( isset( $user_options['posts'] ) && $user_options['posts'] === 'all' ) ) {
 				$this->send( $post, $user );
-				continue;
 			}
 
-			if ( empty( $user_options['mentions'] ) ) {
-				continue;
-			}
-
-			if ( $user_options['mentions'] !== 'yes' ) {
-				continue;
-			}
-
-			$is_user_mentioned = $this->is_user_mentioned( $user, $post->post_content );
-			if ( $is_user_mentioned ) {
-				$this->send( $post, $user );
+			if ( ! isset( $user_options['mentions'] ) || ( isset( $user_options['mentions'] ) && $user_options['mentions'] === 'yes' ) ) {
+				$is_user_mentioned = $this->is_user_mentioned( $user, $post->post_content );
+				if ( $is_user_mentioned ) {
+					$this->send( $post, $user );
+				}
 			}
 		}
 	}

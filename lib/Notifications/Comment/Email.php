@@ -17,7 +17,7 @@ class Email extends \s3rgiosan\WP\Plugin\Notifications\Notifications\Email {
 	 */
 	public function register() {
 		// Disable the default core notification.
-		\add_filter( 'pre_option_comments_notify', '__return_zero' );
+		\add_filter( 'pre_option_comments_notify', '__return_zero', 99 );
 
 		\add_action( 'wp_insert_comment', [ $this, 'queue' ] );
 	}
@@ -41,22 +41,15 @@ class Email extends \s3rgiosan\WP\Plugin\Notifications\Notifications\Email {
 
 			$user_options = \get_user_meta( $user->ID, $this->plugin->get_settings_key(), true );
 
-			if ( ! empty( $user_options['comments'] ) &&  $user_options['comments'] === 'all' ) {
+			if ( ! isset( $user_options['comments'] ) || ( isset( $user_options['comments'] ) && $user_options['comments'] === 'all' ) ) {
 				$this->send( $comment, $user );
-				continue;
 			}
 
-			if ( empty( $user_options['mentions'] ) ) {
-				continue;
-			}
-
-			if ( $user_options['mentions'] !== 'yes' ) {
-				continue;
-			}
-
-			$is_user_mentioned = $this->is_user_mentioned( $user, $comment->comment_content );
-			if ( $is_user_mentioned ) {
-				$this->send( $comment, $user );
+			if ( ! isset( $user_options['mentions'] ) || ( isset( $user_options['mentions'] ) && $user_options['mentions'] === 'yes' ) ) {
+				$is_user_mentioned = $this->is_user_mentioned( $user, $comment->comment_content );
+				if ( $is_user_mentioned ) {
+					$this->send( $comment, $user );
+				}
 			}
 		}
 	}
