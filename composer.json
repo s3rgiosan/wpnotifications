@@ -1,0 +1,38 @@
+{
+  "name": "s3rgiosan/wpnotifications",
+  "description": "Simple email notifications and alerts for WordPress.",
+  "type": "wordpress-plugin",
+  "keywords": ["wordpress", "plugin"],
+  "homepage": "https://github.com/s3rgiosan/wpnotifications.git",
+  "license": "GPL-2.0+",
+  "require": {
+    "composer/installers": "~1.0",
+    "dg/composer-cleaner": "^1.1",
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*@stable",
+    "10up/wp_mock": "@dev"
+  },
+  "authors": [
+    {
+      "name": "Sérgio Santos",
+      "email": "me@s3rgiosan.com",
+      "homepage": "https://s3rgiosan.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "s3rgiosan\\WP\\Plugin\\Notifications\\": "lib/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "s3rgiosan\\WP\\Plugin\\Tests\\Notifications\\": "tests/"
+    }
+  },
+  "minimum-stability": "stable",
+  "config": {
+    "sort-packages": true
+  }
+}
