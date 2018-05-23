@@ -1,13 +1,13 @@
 === Simple Notifications and Alerts ===
 Contributors: s3rgiosan
 Tags: notification, email, alert, notifications, emails, alerts
-Requires at least: 4.0
+Requires at least: 4.8
 Tested up to: 4.9.6
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Simple email notifications and alerts for WordPress.
+Simple and flexible email notifications and alerts for WordPress.
 
 == Description ==
 
@@ -19,12 +19,6 @@ This plugin enables you to:
 Users can change their communication preferences from the default of all posts and comments using profile settings. A special setting can ensure they always receive an email when their username is mentioned.
 
 == Installation ==
-
-= Dashboard =
-
-1. Go to the 'Plugins' menu, and choose 'Add New'.
-2. Search for 'wpnotifications', and then click 'Install Now'.
-2. Click 'Activate'.
 
 = FTP =
 
@@ -45,6 +39,12 @@ Bugs can be reported on the [GitHub repository](https://github.com/s3rgiosan/wpn
 = How can I contribute? =
 
 Join in on our [GitHub repository](https://github.com/s3rgiosan/wpnotifications) and read our [contribution](https://github.com/s3rgiosan/wpnotifications/blob/master/CONTRIBUTING.md) guidelines.
+
+= Do you provide email support? =
+
+I DO NOT provide email support for this plugin. If you send me an email asking for support you'll be invited to:
+1. Post the question on the [GitHub repository](https://github.com/s3rgiosan/wpnotifications/issues)
+2. Or I can give you a quote on premium email support if you prefer to
 
 == Changelog ==
 
